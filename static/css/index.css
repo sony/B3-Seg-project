@@ -64,7 +64,7 @@ html {
 }
 
 .hero-body {
-  padding-top: 4rem;
+  padding-top: 1.3rem;
   padding-bottom: 1.5rem;
 }
 
@@ -119,6 +119,7 @@ html {
   gap: 0.75rem 1.25rem;
   margin: 1.5rem 0 0.5rem;
   font-weight: 600;
+  font-size: 1.3rem;
 }
 
 .affiliations {
@@ -126,7 +127,7 @@ html {
   flex-wrap: wrap;
   gap: 0.5rem 1rem;
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 1.1rem;
 }
 
 .cta-row {
@@ -298,13 +299,13 @@ html {
 }
 
 .equation {
-  background: transparent;
-  color: var(--ink);
-  padding: 0;
-  border-radius: 0;
+  background: #0f172a;
+  color: #e2e8f0;
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
   font-size: 1rem;
   overflow-x: auto;
-  margin: 0.25rem 0 0.75rem;
+  margin: 0.5rem 0 1rem;
   max-width: 100%;
 }
 
@@ -508,6 +509,22 @@ pre {
   .title-rest {
     font-size: 1.55rem;
     line-height: 1.2;
+  }
+
+  .author-blocks {
+    font-size: 1rem;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .affiliations {
+    font-size: 0.95rem;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .cta-row {
+    justify-content: center;
   }
 
   .hero-single {

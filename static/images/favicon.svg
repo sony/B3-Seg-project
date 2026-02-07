@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#0b0f1a"/>
+  <text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle"
+        font-family="'Fraunces', 'Times New Roman', serif" font-size="220" fill="#ffffff">B</text>
+  <text x="62%" y="33%" text-anchor="middle" dominant-baseline="middle"
+        font-family="'Fraunces', 'Times New Roman', serif" font-size="90" fill="#ffffff">3</text>
+</svg>
