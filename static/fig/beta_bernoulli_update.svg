@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fff7ed"/>
+      <stop offset="100%" stop-color="#e0f2fe"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="540" rx="32" fill="url(#bg)"/>
+  <rect x="60" y="130" width="280" height="280" rx="24" fill="#ffffff" stroke="#e2e8f0"/>
+  <rect x="620" y="130" width="280" height="280" rx="24" fill="#ffffff" stroke="#e2e8f0"/>
+
+  <text x="200" y="185" font-family="Space Grotesk, sans-serif" font-size="20" font-weight="600" fill="#0f172a">Prior</text>
+  <text x="200" y="218" font-family="Space Grotesk, sans-serif" font-size="18" fill="#475569">pᵢ ~ Beta(aᵢ, bᵢ)</text>
+
+  <text x="760" y="185" font-family="Space Grotesk, sans-serif" font-size="20" font-weight="600" fill="#0f172a" text-anchor="middle">Posterior</text>
+  <text x="760" y="218" font-family="Space Grotesk, sans-serif" font-size="18" fill="#475569" text-anchor="middle">pᵢ ~ Beta(aᵢ + eᵢ,₁, bᵢ + eᵢ,₀)</text>
+
+  <path d="M 360 270 C 420 220, 540 220, 600 270" fill="none" stroke="#ff6a00" stroke-width="4"/>
+  <polygon points="595,260 622,270 595,280" fill="#ff6a00"/>
+
+  <text x="480" y="315" font-family="Space Grotesk, sans-serif" font-size="18" fill="#0f172a" text-anchor="middle">Mask evidence</text>
+  <text x="480" y="342" font-family="Space Grotesk, sans-serif" font-size="16" fill="#475569" text-anchor="middle">eᵢ,₁ = Σ ωᵢ Tᵢ [M=1]</text>
+  <text x="480" y="365" font-family="Space Grotesk, sans-serif" font-size="16" fill="#475569" text-anchor="middle">eᵢ,₀ = Σ ωᵢ Tᵢ [M=0]</text>
+</svg>

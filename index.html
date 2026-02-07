@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="B^3-Seg: Camera-Free, Training-Free 3DGS Segmentation via Analytic EIG and Beta-Bernoulli Bayesian Updates">
+  <meta name="keywords" content="B^3-Seg, 3D Gaussian Splatting, 3DGS, segmentation, Bayesian, EIG">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>B³-Seg: Camera-Free, Training-Free 3DGS Segmentation via Analytic EIG and Beta–Bernoulli Bayesian Updates</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar is-transparent is-spaced" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item brand" href="#top">B³-Seg</a>
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div id="navMenu" class="navbar-menu">
+    <div class="navbar-end">
+      <a class="navbar-item" href="#overview">Overview</a>
+      <a class="navbar-item" href="#method">Method</a>
+      <a class="navbar-item" href="#results">Results</a>
+      <a class="navbar-item" href="#downloads">Downloads</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero" id="top">
+  <div class="hero-body">
+    <div class="container is-max-desktop hero-grid hero-single">
+      <div class="hero-copy">
+        <p class="pill">Camera-Free · Training-Free · 3DGS Segmentation</p>
+        <h1 class="title is-1 publication-title">
+          <span class="title-brand">B<sup>3</sup>-Seg</span>
+          <span class="title-rest">Camera-Free, Training-Free 3DGS Segmentation via Analytic EIG and Beta–Bernoulli Bayesian Updates</span>
+        </h1>
+        <p class="subtitle hero-subtitle">
+          We reformulate 3DGS segmentation as Bayesian updates on per-Gaussian foreground probabilities and select
+          the next view by analytic Expected Information Gain (EIG), enabling fast interactive segmentation with minimal views.
+        </p>
+
+        <div class="author-blocks">
+          <span class="author">Hiromichi Kamata<sup>1</sup></span>
+          <span class="author">Samuel Arthur Munro<sup>2</sup></span>
+          <span class="author">Fuminori Homma<sup>1</sup></span>
+        </div>
+        <div class="affiliations">
+          <span><sup>1</sup>Sony Group Corporation</span>
+          <span><sup>2</sup>Pixomondo</span>
+        </div>
+
+        <div class="cta-row">
+          <a class="button is-dark is-rounded" href="static/paper/B_3_Seg__Camera_Free__Training_Free_3DGS_Segmentation_via_Analytic_EIG_and_Beta_Bernoulli_Bayesian_Updates.pdf" target="_blank" rel="noopener">
+            <span class="icon"><i class="fas fa-file-pdf"></i></span>
+            <span>Paper (PDF)</span>
+          </a>
+          <a class="button is-light is-rounded" href="static/paper/Appendix_B_3_Seg__Camera_Free__Training_Free_3DGS_Segmentation_via_Analytic_EIG_and_Beta_Bernoulli_Bayesian_Updates.pdf" target="_blank" rel="noopener">
+            <span class="icon"><i class="fas fa-file-alt"></i></span>
+            <span>Supplementary</span>
+          </a>
+          <a class="button is-light is-rounded" href="#downloads">
+            <span class="icon"><i class="fas fa-file-pdf"></i></span>
+            <span>arXiv</span>
+          </a>
+        </div>
+
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="overview">
+  <div class="container is-max-desktop">
+    <div class="section-header">
+      <h2 class="title is-2">Overview</h2>
+      <p class="subtitle">Interactive 3DGS segmentation without predefined cameras or retraining.</p>
+    </div>
+
+    <div class="overview-grid">
+      <div class="overview-figure">
+        <img src="static/fig/top_image.drawio_new.png" alt="B3-Seg overview" />
+        <p class="caption">B³-Seg overview with camera-free view selection and Bayesian updates.</p>
+      </div>
+      <div class="overview-text">
+        <div class="card-block">
+          <h3 class="title is-4">Problem</h3>
+          <p>
+            Existing methods rely on preset viewpoints, ground-truth labels, or costly retraining, which slows
+            low-latency editing workflows.
+          </p>
+        </div>
+        <div class="card-block">
+          <h3 class="title is-4">Idea</h3>
+          <p>
+            Treat segmentation as Bayesian inference over per-Gaussian foreground probabilities and choose the next
+            view by expected information gain.
+          </p>
+        </div>
+        <div class="card-block">
+          <h3 class="title is-4">Result</h3>
+          <p>
+            Fast, adaptive segmentation that matches supervised baselines while using only a handful of views.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="method">
+  <div class="container is-max-desktop">
+    <div class="section-header">
+      <h2 class="title is-2">Method</h2>
+      <p class="subtitle">Active view selection with analytic EIG and fast Bayesian updates for camera-free 3DGS segmentation.</p>
+    </div>
+
+    <div class="teaser">
+      <img src="static/fig/methodnew.png" alt="Method overview" />
+      <p class="caption">Overview of the camera-free pipeline: sample candidate views, score EIG, select the best, infer masks, and update Beta posteriors.</p>
+    </div>
+
+    <div class="columns is-variable is-6 method-steps">
+      <div class="column">
+        <div class="step-card">
+          <span class="step-index">01</span>
+          <h3 class="title is-4">Initialize Beta Priors</h3>
+          <p>Assign a Beta distribution to each Gaussian’s foreground probability and estimate an initial mask.</p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="step-card">
+          <span class="step-index">02</span>
+          <h3 class="title is-4">Sample Candidate Views</h3>
+          <p>Uniformly sample camera candidates around the estimated object center to evaluate informativeness.</p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="step-card">
+          <span class="step-index">03</span>
+          <h3 class="title is-4">Compute EIG</h3>
+          <p>Render once per view to estimate responsibilities and score Expected Information Gain.</p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="step-card">
+          <span class="step-index">04</span>
+          <h3 class="title is-4">Select + Update</h3>
+          <p>Pick the best view, run Grounding DINO + SAM2 + CLIP, then update Beta parameters.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="theory-heading">
+      <h3 class="title is-3">Theoretical Foundations</h3>
+      <p class="subtitle">Bayesian reformulation and analytic EIG with greedy view selection guarantees.</p>
+    </div>
+
+    <div class="theory-block theory-single">
+      <h3 class="title is-4">Bayesian Reformulation</h3>
+      <p>
+        Each Gaussian $g_i$ has a latent label $y_i \in \\{0,1\\}$, with a Beta prior over the
+        foreground probability $p_i$:
+      </p>
+      <div class="equation">$$p_i \sim \mathrm{Beta}(a_i, b_i), \quad y_i \sim \mathrm{Bernoulli}(p_i)$$</div>
+      <p>
+        Given a view $v$ and mask $M(v)$, per-Gaussian evidence is the sum of visibility-weighted
+        responsibilities inside or outside the mask:
+      </p>
+      <div class="equation">$$e_{i,1}(v) = \sum_{(j,k) \in I(v)} \alpha_i T_i \mathbb{I}[M_{j,k}(v)=1], \; e_{i,0}(v)=\sum_{(j,k) \in I(v)} \alpha_i T_i \mathbb{I}[M_{j,k}(v)=0]$$</div>
+      <p>By conjugacy, the posterior update is closed-form:</p>
+      <div class="equation">$$\mathrm{Beta}(a_i,b_i) \rightarrow \mathrm{Beta}(a_i + e_{i,1}(v),\; b_i + e_{i,0}(v))$$</div>
+    </div>
+
+    <div class="theory-pair">
+      <div class="theory-block theory-left">
+        <h3 class="title is-4">Analytic EIG + Greedy Guarantee</h3>
+        <p>
+          To avoid running SAM2 on all candidates, we approximate counts using the current mean
+          $m_i = a_i/(a_i+b_i)$ and compute Expected Information Gain:
+        </p>
+        <div class="equation">$$\mathrm{EIG}(v)= \sum_i \Big[ H(\mathrm{Beta}(a_i,b_i)) - H(\mathrm{Beta}(a_i+\tilde e_{i,1}(v),\; b_i+\tilde e_{i,0}(v))) \Big]$$</div>
+        <p>We select the next view greedily:</p>
+        <div class="equation">$$v^* = \arg\max_v \mathrm{EIG}(v)$$</div>
+        <p>
+          EIG is adaptive monotone and submodular, giving a greedy
+          $(1 - 1/e)$ approximation to the optimal view-selection policy.
+        </p>
+      </div>
+      <div class="theory-block theory-right">
+        <img src="static/fig/eig_explain.drawio.png" alt="Information gain visualization" />
+        <p class="caption">Information gain visualization used to score candidate views without running SAM2.</p>
+      </div>
+    </div>
+
+    
+  </div>
+</section>
+
+<section class="section" id="results">
+  <div class="container is-max-desktop">
+    <div class="section-header">
+      <h2 class="title is-2">Results</h2>
+      <p class="subtitle">Competitive 3D segmentation with far fewer views.</p>
+    </div>
+
+    <div class="columns is-variable is-6">
+      <div class="column">
+        <div class="media-card">
+          <img src="static/fig/qualitative.jpg" alt="Qualitative results" />
+          <p class="caption">Qualitative segmentation across diverse scenes.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns is-variable is-6">
+      <div class="column">
+        <div class="media-card">
+          <img id="eig-gif" src="static/fig/bear_statue_eig.gif" alt="EIG-selected views and segmentation evolution" />
+          <div class="timestep">
+            <div class="timestep-bar" aria-hidden="true">
+              <div class="timestep-track" id="timestep-track">
+                <div class="timestep-active" id="timestep-active"></div>
+                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+                <span>11</span><span>12</span><span>13</span><span>14</span><span>15</span>
+                <span>16</span><span>17</span><span>18</span><span>19</span><span>20</span>
+              </div>
+            </div>
+          </div>
+          <p class="caption">EIG-selected view sequence (left to right: RGB, SAM2 mask, Beta mean map) across iterations.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns is-variable is-6">
+      <div class="column">
+        <div class="media-card">
+          <img src="static/fig/quantitative_table.png" alt="Quantitative results table" />
+          <p class="caption">Quantitative comparison on LERF-Mask dataset.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns is-variable is-6">
+      <div class="column is-6">
+        <div class="media-card">
+          <img src="static/fig/other360.jpg" alt="Additional 360 results" />
+          <p class="caption">360° segmentation results.</p>
+        </div>
+      </div>
+      <div class="column is-6">
+        <div class="media-card">
+          <img src="static/fig/detail_3dovs.jpg" alt="Comparison to 3DOVS" />
+          <p class="caption">Qualitative results on3DOVS dataset.</p>
+        </div>
+        <div class="media-card">
+          <img src="static/fig/detail_lerf.jpg" alt="Comparison to LERF" />
+          <p class="caption">Qualitative results on LERF-Mask dataset.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="downloads">
+  <div class="container is-max-desktop">
+    <div class="section-header">
+      <h2 class="title is-2">Downloads</h2>
+      <p class="subtitle">Swap in final links when ready.</p>
+    </div>
+
+    <div class="download-grid">
+      <a class="download-card" href="static/paper/B_3_Seg__Camera_Free__Training_Free_3DGS_Segmentation_via_Analytic_EIG_and_Beta_Bernoulli_Bayesian_Updates.pdf" target="_blank" rel="noopener">
+        <span class="icon"><i class="fas fa-file-pdf"></i></span>
+        <div>
+          <p class="download-title">Paper (PDF)</p>
+          <p class="download-meta">Main paper</p>
+        </div>
+      </a>
+      <a class="download-card" href="static/paper/Appendix_B_3_Seg__Camera_Free__Training_Free_3DGS_Segmentation_via_Analytic_EIG_and_Beta_Bernoulli_Bayesian_Updates.pdf" target="_blank" rel="noopener">
+        <span class="icon"><i class="fas fa-file-alt"></i></span>
+        <div>
+          <p class="download-title">Supplementary</p>
+          <p class="download-meta">Appendix</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop">
+    <div class="section-header">
+      <h2 class="title is-2">BibTeX</h2>
+      <p class="subtitle">Update with the final citation entry.</p>
+    </div>
+    <pre><code>@article{b3seg2026,
+  title   = {B^3-Seg: Camera-Free, Training-Free 3DGS Segmentation via Analytic EIG and Beta-Bernoulli Bayesian Updates},
+  author  = {Kamata, Hiromichi and Munro, Samuel Arthur and Homma, Fuminori},
+  journal = {arXiv preprint},
+  year    = {2026}
+}
+</code></pre>
+  </div>
+</section>
+
+<script>
+  const burger = document.querySelector('.navbar-burger');
+  const menu = document.querySelector('#navMenu');
+  if (burger && menu) {
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('is-active');
+      menu.classList.toggle('is-active');
+    });
+  }
+
+  const gif = document.querySelector('#eig-gif');
+  const active = document.querySelector('#timestep-active');
+  const totalSteps = 20;
+  const frameMs = 450;
+  const durationMs = totalSteps * frameMs;
+  let startTime = performance.now();
+
+  function syncStep(now) {
+    const elapsed = (now - startTime) % durationMs;
+    const step = Math.floor(elapsed / frameMs);
+    active?.style.setProperty('--step', step);
+    requestAnimationFrame(syncStep);
+  }
+
+  function restartGif() {
+    if (!gif) return;
+    const src = gif.getAttribute('src');
+    gif.setAttribute('src', src);
+    startTime = performance.now();
+  }
+
+  if (gif && active) {
+    restartGif();
+    setInterval(restartGif, durationMs);
+    requestAnimationFrame(syncStep);
+  }
+</script>
+
+</body>
+</html>

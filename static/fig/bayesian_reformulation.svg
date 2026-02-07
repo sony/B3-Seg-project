@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f1f5f9"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="720" rx="36" fill="url(#bg)"/>
+
+  <rect x="80" y="120" width="280" height="200" rx="24" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="220" y="170" font-family="Space Grotesk, sans-serif" font-size="22" font-weight="600" fill="#0f172a" text-anchor="middle">Gaussian gᵢ</text>
+  <text x="220" y="210" font-family="Space Grotesk, sans-serif" font-size="18" fill="#475569" text-anchor="middle">latent label yᵢ</text>
+  <text x="220" y="250" font-family="Space Grotesk, sans-serif" font-size="18" fill="#475569" text-anchor="middle">yᵢ ∈ {0,1}</text>
+
+  <rect x="440" y="80" width="320" height="160" rx="24" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="600" y="130" font-family="Space Grotesk, sans-serif" font-size="22" font-weight="600" fill="#0f172a" text-anchor="middle">Prior</text>
+  <text x="600" y="170" font-family="Space Grotesk, sans-serif" font-size="18" fill="#475569" text-anchor="middle">pᵢ ~ Beta(aᵢ, bᵢ)</text>
+
+  <rect x="440" y="300" width="320" height="160" rx="24" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="600" y="350" font-family="Space Grotesk, sans-serif" font-size="22" font-weight="600" fill="#0f172a" text-anchor="middle">Evidence from mask</text>
+  <text x="600" y="390" font-family="Space Grotesk, sans-serif" font-size="18" fill="#475569" text-anchor="middle">eᵢ,₁ = Σ ωᵢ Tᵢ [M=1]</text>
+  <text x="600" y="425" font-family="Space Grotesk, sans-serif" font-size="18" fill="#475569" text-anchor="middle">eᵢ,₀ = Σ ωᵢ Tᵢ [M=0]</text>
+
+  <rect x="820" y="200" width="300" height="200" rx="24" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="970" y="250" font-family="Space Grotesk, sans-serif" font-size="22" font-weight="600" fill="#0f172a" text-anchor="middle">Posterior</text>
+  <text x="970" y="290" font-family="Space Grotesk, sans-serif" font-size="18" fill="#475569" text-anchor="middle">pᵢ ~ Beta(aᵢ+eᵢ,₁, bᵢ+eᵢ,₀)</text>
+
+  <path d="M 360 220 C 410 200, 430 190, 440 170" fill="none" stroke="#ff6a00" stroke-width="4"/>
+  <path d="M 360 260 C 410 290, 430 320, 440 330" fill="none" stroke="#ff6a00" stroke-width="4"/>
+  <path d="M 760 160 C 810 170, 820 200, 820 240" fill="none" stroke="#0ea5e9" stroke-width="4"/>
+  <path d="M 760 380 C 810 370, 820 340, 820 300" fill="none" stroke="#0ea5e9" stroke-width="4"/>
+
+  <polygon points="432,160 452,170 432,180" fill="#ff6a00"/>
+  <polygon points="432,320 452,330 432,340" fill="#ff6a00"/>
+  <polygon points="812,230 832,240 812,250" fill="#0ea5e9"/>
+  <polygon points="812,290 832,300 812,310" fill="#0ea5e9"/>
+</svg>

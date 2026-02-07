@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#eef2ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="720" rx="36" fill="url(#bg2)"/>
+
+  <rect x="80" y="120" width="360" height="220" rx="24" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="260" y="170" font-family="Space Grotesk, sans-serif" font-size="22" font-weight="600" fill="#0f172a" text-anchor="middle">Candidate views</text>
+  <text x="260" y="210" font-family="Space Grotesk, sans-serif" font-size="18" fill="#475569" text-anchor="middle">v₁, v₂, v₃, ...</text>
+  <circle cx="170" cy="270" r="22" fill="#0ea5e9"/>
+  <circle cx="260" cy="270" r="22" fill="#94a3b8"/>
+  <circle cx="350" cy="270" r="22" fill="#94a3b8"/>
+
+  <rect x="520" y="80" width="340" height="220" rx="24" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="690" y="130" font-family="Space Grotesk, sans-serif" font-size="22" font-weight="600" fill="#0f172a" text-anchor="middle">Analytic EIG</text>
+  <text x="690" y="170" font-family="Space Grotesk, sans-serif" font-size="18" fill="#475569" text-anchor="middle">H(Beta) - H(Beta + ẽ)</text>
+  <rect x="570" y="200" width="240" height="16" rx="8" fill="#e2e8f0"/>
+  <rect x="570" y="200" width="180" height="16" rx="8" fill="#0ea5e9"/>
+  <rect x="570" y="230" width="240" height="16" rx="8" fill="#e2e8f0"/>
+  <rect x="570" y="230" width="110" height="16" rx="8" fill="#94a3b8"/>
+
+  <rect x="520" y="360" width="340" height="220" rx="24" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="690" y="410" font-family="Space Grotesk, sans-serif" font-size="22" font-weight="600" fill="#0f172a" text-anchor="middle">Greedy choice</text>
+  <text x="690" y="450" font-family="Space Grotesk, sans-serif" font-size="18" fill="#475569" text-anchor="middle">v* = arg max EIG(v)</text>
+  <rect x="600" y="480" width="180" height="50" rx="12" fill="#ff6a00"/>
+  <text x="690" y="512" font-family="Space Grotesk, sans-serif" font-size="18" font-weight="600" fill="#ffffff" text-anchor="middle">select v*</text>
+
+  <rect x="900" y="200" width="240" height="200" rx="24" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="1020" y="250" font-family="Space Grotesk, sans-serif" font-size="22" font-weight="600" fill="#0f172a" text-anchor="middle">Guarantee</text>
+  <text x="1020" y="295" font-family="Space Grotesk, sans-serif" font-size="18" fill="#475569" text-anchor="middle">(1 - 1/e)</text>
+  <text x="1020" y="325" font-family="Space Grotesk, sans-serif" font-size="18" fill="#475569" text-anchor="middle">approximation</text>
+
+  <path d="M 440 220 C 470 220, 500 210, 520 200" fill="none" stroke="#0ea5e9" stroke-width="4"/>
+  <path d="M 690 300 C 690 330, 690 340, 690 360" fill="none" stroke="#0ea5e9" stroke-width="4"/>
+  <path d="M 860 220 C 880 220, 900 230, 900 250" fill="none" stroke="#ff6a00" stroke-width="4"/>
+</svg>
