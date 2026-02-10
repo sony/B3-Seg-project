@@ -23,6 +23,20 @@
       }
     };
   </script>
+
+  <script>
+    (function () {
+      const PASSWORD = "b3seg-review"; 
+    
+      const input = prompt("Password:");
+      if (input !== PASSWORD) {
+        document.documentElement.innerHTML = "";
+        document.write("Access denied.");
+        throw new Error("Access denied");
+      }
+    })();
+  </script>
+  
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
 </head>
