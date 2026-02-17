@@ -23,19 +23,6 @@
       }
     };
   </script>
-
-  <script>
-    (function () {
-      const PASSWORD = "b3seg-review"; 
-    
-      const input = prompt("Password:");
-      if (input !== PASSWORD) {
-        document.documentElement.innerHTML = "";
-        document.write("Access denied.");
-        throw new Error("Access denied");
-      }
-    })();
-  </script>
   
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -71,7 +58,7 @@
         </h1>
 
         <div class="author-blocks">
-          <span class="author">Hiromichi Kamata<sup>1</sup></span>
+          <span class="author"><a href="https://www.linkedin.com/in/hiromichi-kamata-10a736186/" target="_blank" rel="noopener">Hiromichi Kamata</a><sup>1</sup></span>
           <span class="author">Samuel Arthur Munro<sup>2</sup></span>
           <span class="author">Fuminori Homma<sup>1</sup></span>
         </div>
