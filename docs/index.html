@@ -2,11 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="description" content="B^3-Seg: Camera-Free, Training-Free 3DGS Segmentation via Analytic EIG and Beta-Bernoulli Bayesian Updates">
   <meta name="keywords" content="B^3-Seg, 3D Gaussian Splatting, 3DGS, segmentation, Bayesian, EIG">
+  <meta name="author" content="Hiromichi Kamata, Samuel Arthur Munro, Fuminori Homma">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="googlebot" content="index, follow, max-image-preview:large">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0f172a">
   <title>B³-Seg: Camera-Free, Training-Free 3DGS Segmentation via Analytic EIG and Beta–Bernoulli Bayesian Updates</title>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="B3-Seg Project Page">
+  <meta property="og:title" content="B³-Seg: Camera-Free, Training-Free 3DGS Segmentation">
+  <meta property="og:description" content="Interactive 3D Gaussian Splatting segmentation with analytic EIG and Beta-Bernoulli Bayesian updates.">
+  <meta property="og:image" content="./static/fig/top_image.drawio_new.png">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="B³-Seg: Camera-Free, Training-Free 3DGS Segmentation">
+  <meta name="twitter:description" content="Camera-free, training-free 3DGS segmentation with analytic EIG and Bayesian updates.">
+  <meta name="twitter:image" content="./static/fig/top_image.drawio_new.png">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="./static/css/bulma.min.css">
@@ -26,7 +43,39 @@
   
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ScholarlyArticle",
+      "headline": "B^3-Seg: Camera-Free, Training-Free 3DGS Segmentation via Analytic EIG and Beta-Bernoulli Bayesian Updates",
+      "description": "Interactive 3D Gaussian Splatting segmentation without predefined cameras or model retraining.",
+      "author": [
+        { "@type": "Person", "name": "Hiromichi Kamata" },
+        { "@type": "Person", "name": "Samuel Arthur Munro" },
+        { "@type": "Person", "name": "Fuminori Homma" }
+      ],
+      "keywords": [
+        "3D Gaussian Splatting",
+        "3DGS",
+        "Segmentation",
+        "Bayesian Inference",
+        "Expected Information Gain"
+      ],
+      "inLanguage": "en"
+    }
+  </script>
 </head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8CCE8SEP5X"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8CCE8SEP5X');
+</script>
+
 <body>
 
 <nav class="navbar is-transparent is-spaced" role="navigation" aria-label="main navigation">
@@ -48,6 +97,7 @@
   </div>
 </nav>
 
+<main id="main-content">
 <section class="hero" id="top">
   <div class="hero-body">
     <div class="container is-max-desktop hero-grid hero-single">
@@ -58,7 +108,7 @@
         </h1>
 
         <div class="author-blocks">
-          <span class="author"><a href="https://www.linkedin.com/in/hiromichi-kamata-10a736186/" target="_blank" rel="noopener">Hiromichi Kamata</a><sup>1</sup></span>
+          <span class="author"><a href="https://www.linkedin.com/in/hiromichi-kamata-10a736186/" target="_blank" rel="noopener noreferrer">Hiromichi Kamata</a><sup>1</sup></span>
           <span class="author">Samuel Arthur Munro<sup>2</sup></span>
           <span class="author">Fuminori Homma<sup>1</sup></span>
         </div>
@@ -68,11 +118,11 @@
         </div>
 
         <div class="cta-row">
-          <a class="button is-dark is-rounded" href="static/paper/B_3_Seg__Camera_Free__Training_Free_3DGS_Segmentation_via_Analytic_EIG_and_Beta_Bernoulli_Bayesian_Updates.pdf" target="_blank" rel="noopener">
+          <a class="button is-dark is-rounded" href="static/paper/B_3_Seg__Camera_Free__Training_Free_3DGS_Segmentation_via_Analytic_EIG_and_Beta_Bernoulli_Bayesian_Updates.pdf" target="_blank" rel="noopener noreferrer">
             <span class="icon"><i class="fas fa-file-pdf"></i></span>
             <span>Paper (PDF)</span>
           </a>
-          <a class="button is-light is-rounded" href="static/paper/Appendix_B_3_Seg__Camera_Free__Training_Free_3DGS_Segmentation_via_Analytic_EIG_and_Beta_Bernoulli_Bayesian_Updates.pdf" target="_blank" rel="noopener">
+          <a class="button is-light is-rounded" href="static/paper/Appendix_B_3_Seg__Camera_Free__Training_Free_3DGS_Segmentation_via_Analytic_EIG_and_Beta_Bernoulli_Bayesian_Updates.pdf" target="_blank" rel="noopener noreferrer">
             <span class="icon"><i class="fas fa-file-alt"></i></span>
             <span>Supplementary</span>
           </a>
@@ -225,7 +275,7 @@
     <div class="columns is-variable is-6">
       <div class="column">
         <div class="media-card">
-          <img src="static/fig/qualitative.jpg" alt="Qualitative results" />
+          <img src="static/fig/qualitative.jpg" alt="Qualitative results" loading="lazy" decoding="async" />
           <p class="caption">Qualitative segmentation across diverse scenes.</p>
         </div>
       </div>
@@ -234,7 +284,7 @@
     <div class="columns is-variable is-6">
       <div class="column">
         <div class="media-card">
-          <img id="eig-gif" src="static/fig/bear_statue_eig.gif" alt="EIG-selected views and segmentation evolution" />
+          <img id="eig-gif" src="static/fig/bear_statue_eig.gif" alt="EIG-selected views and segmentation evolution" loading="lazy" decoding="async" />
           <div class="timestep">
             <div class="timestep-bar" aria-hidden="true">
               <div class="timestep-track" id="timestep-track">
@@ -254,7 +304,7 @@
     <div class="columns is-variable is-6">
       <div class="column">
         <div class="media-card">
-          <img src="static/fig/quantitative_table.png" alt="Quantitative results table" />
+          <img src="static/fig/quantitative_table.png" alt="Quantitative results table" loading="lazy" decoding="async" />
           <p class="caption">Quantitative comparison on LERF-Mask dataset.</p>
         </div>
       </div>
@@ -263,17 +313,17 @@
     <div class="columns is-variable is-6">
       <div class="column is-6">
         <div class="media-card">
-          <img src="static/fig/other360.jpg" alt="Additional 360 results" />
+          <img src="static/fig/other360.jpg" alt="Additional 360 results" loading="lazy" decoding="async" />
           <p class="caption">360° segmentation results.</p>
         </div>
       </div>
       <div class="column is-6">
         <div class="media-card">
-          <img src="static/fig/detail_3dovs.jpg" alt="Comparison to 3DOVS" />
-          <p class="caption">Qualitative results on3DOVS dataset.</p>
+          <img src="static/fig/detail_3dovs.jpg" alt="Comparison to 3DOVS" loading="lazy" decoding="async" />
+          <p class="caption">Qualitative results on 3DOVS dataset.</p>
         </div>
         <div class="media-card">
-          <img src="static/fig/detail_lerf.jpg" alt="Comparison to LERF" />
+          <img src="static/fig/detail_lerf.jpg" alt="Comparison to LERF" loading="lazy" decoding="async" />
           <p class="caption">Qualitative results on LERF-Mask dataset.</p>
         </div>
       </div>
@@ -289,14 +339,14 @@
     </div>
 
     <div class="download-grid">
-      <a class="download-card" href="static/paper/B_3_Seg__Camera_Free__Training_Free_3DGS_Segmentation_via_Analytic_EIG_and_Beta_Bernoulli_Bayesian_Updates.pdf" target="_blank" rel="noopener">
+      <a class="download-card" href="static/paper/B_3_Seg__Camera_Free__Training_Free_3DGS_Segmentation_via_Analytic_EIG_and_Beta_Bernoulli_Bayesian_Updates.pdf" target="_blank" rel="noopener noreferrer">
         <span class="icon"><i class="fas fa-file-pdf"></i></span>
         <div>
           <p class="download-title">Paper (PDF)</p>
           <p class="download-meta">Main paper</p>
         </div>
       </a>
-      <a class="download-card" href="static/paper/Appendix_B_3_Seg__Camera_Free__Training_Free_3DGS_Segmentation_via_Analytic_EIG_and_Beta_Bernoulli_Bayesian_Updates.pdf" target="_blank" rel="noopener">
+      <a class="download-card" href="static/paper/Appendix_B_3_Seg__Camera_Free__Training_Free_3DGS_Segmentation_via_Analytic_EIG_and_Beta_Bernoulli_Bayesian_Updates.pdf" target="_blank" rel="noopener noreferrer">
         <span class="icon"><i class="fas fa-file-alt"></i></span>
         <div>
           <p class="download-title">Supplementary</p>
@@ -322,6 +372,7 @@
 </code></pre>
   </div>
 </section>
+</main>
 
 <script>
   const burger = document.querySelector('.navbar-burger');
