@@ -505,6 +505,12 @@ pre {
 }
 
 @media (max-width: 768px) {
+  .overview-figure,
+  .teaser,
+  .media-card {
+    padding: 0.7rem;
+  }
+
   .hero-body {
     padding-top: 2.5rem;
     padding-bottom: 3rem;
