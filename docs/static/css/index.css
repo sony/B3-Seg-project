@@ -113,6 +113,29 @@ html {
   white-space: normal;
 }
 
+.hero-venue {
+  display: block;
+  margin-top: 0.9rem;
+  margin-bottom: 0.6rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+  font-weight: 700;
+  font-size: clamp(1.8rem, 3.4vw, 2.4rem);
+  letter-spacing: 0.02em;
+  color: #c2410c;
+  text-shadow: 0 1px 0 rgba(190, 24, 24, 0.12);
+  text-align: center;
+}
+
+.venue-desktop {
+  display: inline;
+}
+
+.venue-mobile {
+  display: none;
+}
+
 .author-blocks {
   display: flex;
   flex-wrap: wrap;
@@ -550,6 +573,18 @@ pre {
 
   .hero-single {
     gap: 1.75rem;
+  }
+
+  .hero-venue {
+    font-size: clamp(1.45rem, 6.2vw, 1.9rem);
+  }
+
+  .venue-desktop {
+    display: none;
+  }
+
+  .venue-mobile {
+    display: inline;
   }
 
   .overview-grid {
